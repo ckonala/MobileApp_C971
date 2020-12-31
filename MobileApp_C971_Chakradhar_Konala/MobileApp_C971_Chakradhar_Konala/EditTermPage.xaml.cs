@@ -13,10 +13,6 @@ namespace MobileApp_C971_Chakradhar_Konala
     public partial class EditTermPage : ContentPage
     {
         private Term term { get; set; }
-        public EditTermPage()
-        {
-            InitializeComponent();
-        }
 
         public EditTermPage(Term term)
         {

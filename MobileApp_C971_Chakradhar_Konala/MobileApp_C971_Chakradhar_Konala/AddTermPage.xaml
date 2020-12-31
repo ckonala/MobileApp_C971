@@ -1,15 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MobileApp_C971_Chakradhar_Konala.EditTermPage">
-
+             x:Class="MobileApp_C971_Chakradhar_Konala.AddTermPage">
 
     <NavigationPage.TitleView>
-        <Label Text="Edit / Delete Term" HorizontalOptions="Start" FontSize="Large"/>
+        <Label Text="Add Term" HorizontalOptions="Start" FontSize="Large"/>
     </NavigationPage.TitleView>
 
     <ContentPage.Content>
-
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -39,8 +37,7 @@
                         HorizontalOptions="CenterAndExpand"
                         WidthRequest="100"
                         VerticalOptions="Center"
-                        FontSize="18"
-                        Completed="TermInfo_OnCompleted"/>
+                        FontSize="18"/>
             </StackLayout>
 
             <StackLayout Grid.Row="1"
@@ -62,8 +59,7 @@
                             Format="D"
                             HorizontalOptions="FillAndExpand"
                             VerticalOptions="Center"
-                            FontSize="18"
-                            DateSelected="StartDatePicker_OnDateSelected"/>
+                            FontSize="18"/>
             </StackLayout>
 
             <StackLayout Grid.Row="2"
@@ -85,20 +81,18 @@
                             Format="D"
                             HorizontalOptions="FillAndExpand"
                             VerticalOptions="Center"
-                            FontSize="18"
-                            DateSelected="TermendDatePicker_OnDateSelected" />
+                            FontSize="18"/>
             </StackLayout>
 
             <Button Grid.Row="3"
                     Grid.ColumnSpan="2"
-                    Text="Delete Term"
-                    x:Name="DeleteTerm"
+                    Text="Save Term"
+                    x:Name="SaveTerm"
                     HorizontalOptions="Center"
                     VerticalOptions="End" 
                     Margin="50,0,0,20"
-                    Clicked="DeleteTerm_OnClicked"/>
+                    Clicked="SaveTerm_OnClicked"/>
 
         </Grid>
-
     </ContentPage.Content>
 </ContentPage>

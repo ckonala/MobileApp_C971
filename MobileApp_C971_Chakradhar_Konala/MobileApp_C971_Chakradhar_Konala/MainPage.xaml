@@ -3,6 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobileApp_C971_Chakradhar_Konala.MainPage">
 
+    <NavigationPage.TitleView>
+        <Label Text="Term Information" HorizontalOptions="Start" FontSize="Large"/>
+    </NavigationPage.TitleView>
+
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="AddTerm"
                      Text="Add Term"
@@ -32,7 +36,7 @@
     <StackLayout VerticalOptions="CenterAndExpand">
         <Label x:Name="TermTitle"
                Text="Welcome Student!"
-               HorizontalTextAlignment="Start"
+               HorizontalTextAlignment="Center"
                TextColor="Blue"
                FontSize="Title" />
 
@@ -43,32 +47,32 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <ContentView>
-                    <Frame BorderColor="Black"
+                        <Frame BorderColor="Black"
                            CornerRadius="15"
                            HasShadow="True" Margin="10">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Label Grid.Column="1"
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="1"
                                    Text="{Binding termTitle}"
                                    FontAttributes="Bold"
                                    FontSize="Body"/>
-                            <Label Grid.Row="1"
+                                <Label Grid.Row="1"
                                    Grid.Column="1"
                                        Text="{Binding startDate,StringFormat='Start Date : {0:MMMM dd, yyyy}'}"
                                    FontAttributes="None" />
-                            <Label Grid.Row="2"
+                                <Label Grid.Row="2"
                                    Grid.Column="1"
                                        Text="{Binding endDate,StringFormat='End Date   : {0:MMMM dd, yyyy}'}"
                                    VerticalOptions="End" />
-                        </Grid>
-                    </Frame>
+                            </Grid>
+                        </Frame>
                     </ContentView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

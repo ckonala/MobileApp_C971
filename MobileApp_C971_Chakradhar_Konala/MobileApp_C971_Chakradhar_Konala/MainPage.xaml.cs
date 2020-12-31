@@ -21,9 +21,9 @@ namespace MobileApp_C971_Chakradhar_Konala
 
         private bool PerformDummyInsert { get; set; }
 
-        private void addTerm_Clicked(object sender, EventArgs e)
+        private async void addTerm_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new AddTermPage());
         }
 
         protected override async void OnAppearing()
