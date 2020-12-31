@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileApp_C971_Chakradhar_Konala.EditTermPage">
+    <ContentPage.Content>
+       
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+
+            <StackLayout Grid.Column="0"
+                         VerticalOptions="Start"
+                         HeightRequest="60">
+                <Label  Text="Term :"
+                        VerticalOptions="CenterAndExpand"></Label>
+            </StackLayout>
+
+            <StackLayout Grid.Column="1"
+                         Orientation="Horizontal"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="Start"
+                         HeightRequest="60">
+                <Entry  x:Name="TermInfo"
+                        HorizontalOptions="CenterAndExpand"
+                        WidthRequest="100"
+                        VerticalOptions="Center"
+                        FontSize="18"
+                        Completed="TermInfo_OnCompleted"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="1"
+                         Grid.Column="0"
+                         VerticalOptions="Start"
+                         HeightRequest="60">
+                <Label  Text="Start Date :"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="Start"></Label>
+            </StackLayout>
+
+            <StackLayout Grid.Row="1"
+                         Grid.Column="1"
+                         Orientation="Horizontal"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="Start"
+                         HeightRequest="60">
+                <DatePicker x:Name="termStartDatePicker"
+                            Format="D"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Center"
+                            FontSize="18"
+                            DateSelected="StartDatePicker_OnDateSelected"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="2"
+                         Grid.Column="0"
+                         VerticalOptions="Start"
+                         HeightRequest="60">
+                <Label  Text="End Date :"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="Start"></Label>
+            </StackLayout>
+
+            <StackLayout Grid.Row="2"
+                         Grid.Column="1"
+                         Orientation="Horizontal"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="Start"
+                         HeightRequest="60">
+                <DatePicker x:Name="termendDatePicker"
+                            Format="D"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Center"
+                            FontSize="18"
+                            DateSelected="TermendDatePicker_OnDateSelected" />
+            </StackLayout>
+
+            <Button Grid.Row="3"
+                    Grid.ColumnSpan="2"
+                    Text="Delete Term"
+                    x:Name="DeleteTerm"
+                    HorizontalOptions="Center"
+                    VerticalOptions="End" 
+                    Margin="50,0,0,20"
+                    Clicked="DeleteTerm_OnClicked"/>
+
+        </Grid>
+    
+
+    </ContentPage.Content>
+</ContentPage>
