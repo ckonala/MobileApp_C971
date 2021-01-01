@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileApp_C971_Chakradhar_Konala.CourseViewPage">
+
+    <NavigationPage.TitleView>
+        <Label Text="Courses" HorizontalOptions="Start" FontSize="Large"/>
+    </NavigationPage.TitleView>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="AddCourse"
+                     Text="Add Course"
+                     Clicked="AddCourse_OnClicked"
+                     Order="Primary"
+                     Priority="0" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+        <Style TargetType="ContentView">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="LightSkyBlue" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+
+    <StackLayout VerticalOptions="CenterAndExpand">
+        <Label x:Name="termTitle"
+               Text=""
+               HorizontalTextAlignment="Center"
+               FontSize="Title"
+               FontAttributes="Bold"/>
+        <Label x:Name="termStartDate"
+               Text=""
+               HorizontalTextAlignment="Center"
+               FontSize="Medium" />
+
+        <CollectionView x:Name="CourseList"
+                        Margin="10"
+                        SelectionMode="Single"
+                        SelectionChanged="CourseList_OnSelectionChanged" >
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <ContentView>
+                        <Frame BorderColor="Black"
+                           CornerRadius="15"
+                           HasShadow="True" Margin="10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="1"
+                                   Text="{Binding courseTitle}"
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"/>
+                                <Label Grid.Row="1"
+                                   Grid.Column="1"
+                                       Text="{Binding courseStartDate,StringFormat='Start Date : {0:MMMM dd, yyyy}'}"/>
+                                <Label Grid.Row="2"
+                                   Grid.Column="1"
+                                       Text="{Binding courseEndDate,StringFormat='End Date   : {0:MMMM dd, yyyy}'}"/>
+                                <Label Grid.Row="3"
+                                       Grid.Column="1"
+                                       Text="{Binding courseStatus}"
+                                       FontSize="Body"
+                                       VerticalOptions="End" />
+                            </Grid>
+                        </Frame>
+                    </ContentView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <StackLayout VerticalOptions="End"
+                    Orientation="Horizontal">
+        <Button Text="Edit / Delete Term"
+                x:Name="EditDeleteTerm"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="EndAndExpand" 
+                Clicked="EditDeleteTerm_OnClicked"
+                Margin="0,0,0,10"/>
+        </StackLayout>
+    </StackLayout>
+
+
+</ContentPage>

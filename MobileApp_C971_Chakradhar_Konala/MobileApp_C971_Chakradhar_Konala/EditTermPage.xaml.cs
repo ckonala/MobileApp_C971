@@ -76,8 +76,13 @@ namespace MobileApp_C971_Chakradhar_Konala
 
         private async void DeleteTerm_OnClicked(object sender, EventArgs e)
         {
+            var getCourseWithTermID = await App.Database.GetCourseAsync(term.ID);
+            foreach (var Course in getCourseWithTermID)
+            {
+                await App.Database.DeleteCourseAsync(Course);
+            }
             await App.Database.DeleteTermAsync(term);
-            await Navigation.PopAsync();
+            await Navigation.PopToRootAsync();
         }
     }
 }

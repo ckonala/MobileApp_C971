@@ -34,22 +34,32 @@ namespace MobileApp_C971_Chakradhar_Konala
                 {
                     termTitle = "Term 1",
                     startDate = DateTime.Now.Date,
-                    endDate = DateTime.Now.Date.AddDays(29)
+                    endDate = DateTime.Now.Date.AddDays(30)
                 };
 
-                var term2 = new Term()
-                {
-                    termTitle = "Term 2",
-                    startDate = DateTime.Now.Date.AddDays(30),
-                    endDate = DateTime.Now.Date.AddDays(60)
-                };
-
-                App.Database.CreateTable();
+                App.Database.CreateTermTable();
 
                 if (!(await App.Database.GetTermAsync()).Any())
                 {
-                    App.Database.InsertTermAsync(term).Wait();
-                    App.Database.InsertTermAsync(term2).Wait();
+                   var termPrimaryKey = await App.Database.InsertTermAsync(term);
+
+                   var course = new Course()
+                   {
+                       courseTitle = "Course 1",
+                       courseStartDate = DateTime.Now.Date,
+                       courseEndDate = DateTime.Now.Date.AddDays(30),
+                       courseStatus = "Not Started",
+                       courseInstructor = "Chuck Konala",
+                       courseInstructorPhone = "817-727-5432",
+                       courseInstructorEmail = "ckonala@wgu.edu",
+                       courseNotes = "",
+                       courseNotifications = true,
+                       termID = termPrimaryKey
+
+                   };
+
+                   App.Database.CreateCourseTable();
+                   await App.Database.InsertCourseAsync(course);
                 }
 
                 PerformDummyInsert = false;
@@ -62,7 +72,7 @@ namespace MobileApp_C971_Chakradhar_Konala
 
         private async void TermInformation_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            await Navigation.PushAsync(new EditTermPage(e.CurrentSelection.FirstOrDefault() as Term));
+            await Navigation.PushAsync(new CourseViewPage(e.CurrentSelection.FirstOrDefault() as Term));
 
         }
     }
