@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using MobileApp_C971_Chakradhar_Konala.Model;
 using MobileApp_C971_Chakradhar_Konala.ViewModel;
@@ -25,7 +27,15 @@ namespace MobileApp_C971_Chakradhar_Konala
         private async void SaveCourse_OnClicked(object sender, EventArgs e)
         {
             Course course = new Course();
+
+            course.termID = term.ID;
+
             course.courseNotifications = CourseNotification.IsToggled;
+
+            if (!(CourseNotes.Text is null))
+            {
+                course.courseNotes = CourseNotes.Text;
+            }
 
             if (!(CourseInfo.Text is null) && CourseInfo.Text.Length > 1)
             {
@@ -38,30 +48,73 @@ namespace MobileApp_C971_Chakradhar_Konala
                     if (courseendDatePicker.Date >= courseStartDatePicker.Date)
                     {
                         course.courseEndDate = courseendDatePicker.Date;
+
                         if (!(courseSelect.SelectedItem is null))
                         {
                             course.courseStatus = courseSelect.SelectedItem.ToString();
-                            await Navigation.PopAsync();
+
+                            if (!(CourseInstructor.Text is null) && CourseInstructor.Text.Length > 1)
+                            {
+                                course.courseInstructor = CourseInstructor.Text;
+                                Regex phonepattern = new Regex(@"(?<!\d)\d{10}(?!\d)"); //Phone number Pattern
+                                if (!(CourseInstructorNumber.Text is null) && CourseInstructorNumber.Text.Length == 10 && phonepattern.IsMatch(CourseInstructorNumber.Text))
+                                {
+                                    course.courseInstructorPhone = CourseInstructorNumber.Text;
+
+                                    if (!(CourseInstructorEmail.Text is null) && IsValidEmail(CourseInstructorEmail.Text))
+                                    {
+                                        course.courseInstructorEmail = CourseInstructorEmail.Text;
+                                        await App.Database.InsertCourseAsync(course);
+                                        await Navigation.PopAsync();
+                                    }
+                                    else
+                                    {
+                                        await DisplayAlert("Error", "Please ensure Course Instructor email field is not empty and is valid, such as (test@example.com)", "Ok");
+                                    }
+                                }
+                                else
+                                {
+                                    await DisplayAlert("Error", "Please ensure Course Instructor number field is not empty and has 10 digits", "Ok");
+                                }
+                            }
+                            else
+                            {
+                                await DisplayAlert("Error", "Please ensure Course Instructor field is not empty", "Ok");
+                            }
                         }
                         else
                         {
-                            await DisplayAlert("Error.", "Please select course status", "Ok");
+                            await DisplayAlert("Error", "Please select course status", "Ok");
                         }
-                        
+
                     }
                     else
                     {
-                        await DisplayAlert("Error.", "End Date should be after the start date", "Ok");
+                        await DisplayAlert("Error", "End Date should be after the start date", "Ok");
                     }
                 }
                 else
                 {
-                    await DisplayAlert("Error.", "Start Date should be before the end date", "Ok");
+                    await DisplayAlert("Error", "Start Date should be before the end date", "Ok");
                 }
             }
             else
             {
-                await DisplayAlert("Error.", "Please ensure Course field is not empty", "Ok");
+                await DisplayAlert("Error", "Please ensure Course field is not empty", "Ok");
+            }
+        }
+
+        private bool IsValidEmail(string emailaddress)
+        {
+            try
+            {
+                MailAddress m = new MailAddress(emailaddress);
+
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
             }
         }
     }

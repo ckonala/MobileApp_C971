@@ -167,7 +167,7 @@
                              Orientation="Horizontal"
                              HorizontalOptions="FillAndExpand"
                              VerticalOptions="CenterAndExpand">
-                    <Editor x:Name="Notes"
+                    <Editor x:Name="CourseNotes"
                             HorizontalOptions="CenterAndExpand"
                             WidthRequest="250"
                             VerticalOptions="Center"

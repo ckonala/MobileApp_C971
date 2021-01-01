@@ -14,15 +14,15 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="100" />
-                <RowDefinition Height="100" />
-                <RowDefinition Height="100" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
 
             <StackLayout Grid.Column="0"
-                         VerticalOptions="Start"
+                         VerticalOptions="CenterAndExpand"
                          HeightRequest="60">
                 <Label  Text="Term :"
                         VerticalOptions="CenterAndExpand"></Label>
@@ -31,66 +31,61 @@
             <StackLayout Grid.Column="1"
                          Orientation="Horizontal"
                          HorizontalOptions="FillAndExpand"
-                         VerticalOptions="Start"
+                         VerticalOptions="CenterAndExpand"
                          HeightRequest="60">
                 <Entry  x:Name="TermInfo"
                         HorizontalOptions="CenterAndExpand"
-                        WidthRequest="100"
-                        VerticalOptions="Center"
-                        FontSize="18"/>
+                        WidthRequest="300"
+                        VerticalOptions="Center"/>
             </StackLayout>
 
             <StackLayout Grid.Row="1"
                          Grid.Column="0"
-                         VerticalOptions="Start"
+                         VerticalOptions="CenterAndExpand"
                          HeightRequest="60">
                 <Label  Text="Start Date :"
-                        VerticalOptions="CenterAndExpand"
-                        HorizontalOptions="Start"></Label>
+                        VerticalOptions="CenterAndExpand"></Label>
             </StackLayout>
 
             <StackLayout Grid.Row="1"
                          Grid.Column="1"
                          Orientation="Horizontal"
                          HorizontalOptions="FillAndExpand"
-                         VerticalOptions="Start"
+                         VerticalOptions="CenterAndExpand"
                          HeightRequest="60">
                 <DatePicker x:Name="termStartDatePicker"
                             Format="D"
                             HorizontalOptions="FillAndExpand"
-                            VerticalOptions="Center"
-                            FontSize="18"/>
+                            VerticalOptions="Center"/>
             </StackLayout>
 
             <StackLayout Grid.Row="2"
                          Grid.Column="0"
-                         VerticalOptions="Start"
+                         VerticalOptions="CenterAndExpand"
                          HeightRequest="60">
                 <Label  Text="End Date :"
-                        VerticalOptions="CenterAndExpand"
-                        HorizontalOptions="Start"></Label>
+                        VerticalOptions="CenterAndExpand"></Label>
             </StackLayout>
 
             <StackLayout Grid.Row="2"
                          Grid.Column="1"
                          Orientation="Horizontal"
                          HorizontalOptions="FillAndExpand"
-                         VerticalOptions="Start"
+                         VerticalOptions="CenterAndExpand"
                          HeightRequest="60">
                 <DatePicker x:Name="termendDatePicker"
                             Format="D"
                             HorizontalOptions="FillAndExpand"
-                            VerticalOptions="Center"
-                            FontSize="18"/>
+                            VerticalOptions="Center"/>
             </StackLayout>
 
             <Button Grid.Row="3"
                     Grid.ColumnSpan="2"
                     Text="Save Term"
                     x:Name="SaveTerm"
-                    HorizontalOptions="Center"
+                    HorizontalOptions="CenterAndExpand"
                     VerticalOptions="End" 
-                    Margin="50,0,0,20"
+                    Margin="0,0,0,20"
                     Clicked="SaveTerm_OnClicked"/>
 
         </Grid>

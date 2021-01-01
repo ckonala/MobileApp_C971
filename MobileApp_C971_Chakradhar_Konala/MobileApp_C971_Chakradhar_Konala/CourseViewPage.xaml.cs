@@ -34,7 +34,7 @@ namespace MobileApp_C971_Chakradhar_Konala
         {
             termTitle.Text = term.termTitle;
             termStartDate.Text = $"{term.startDate.Date.ToString("MM/dd/yyyy")} - {term.endDate.Date.ToString("MM/dd/yyyy")}";
-            var _courseList = await App.Database.GetCourseAsync();
+            var _courseList = await App.Database.GetCourseAsync(term.ID);
             CourseList.ItemsSource = _courseList;
             base.OnAppearing();
         }
