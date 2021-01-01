@@ -68,6 +68,11 @@ namespace MobileApp_C971_Chakradhar_Konala.Model
             return _database.InsertAsync(term);
         }
 
+        public Task<List<Term>> RetreiveTermLastRow()
+        {
+            return _database.QueryAsync<Term>("SELECT * FROM Term ORDER BY ID DESC LIMIT 1");
+        }
+
         public Task<int> UpdateTermAsync(Term term)
         {
             return _database.UpdateAsync(term);

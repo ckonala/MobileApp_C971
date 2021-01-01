@@ -41,25 +41,26 @@ namespace MobileApp_C971_Chakradhar_Konala
 
                 if (!(await App.Database.GetTermAsync()).Any())
                 {
-                   var termPrimaryKey = await App.Database.InsertTermAsync(term);
+                   await App.Database.InsertTermAsync(term);
+                   var temptermPrimaryKey = await App.Database.RetreiveTermLastRow();
+                   var termPrimaryKey = temptermPrimaryKey[0].ID;
 
                    var course = new Course()
-                   {
-                       courseTitle = "Course 1",
-                       courseStartDate = DateTime.Now.Date,
-                       courseEndDate = DateTime.Now.Date.AddDays(30),
-                       courseStatus = "Not Started",
-                       courseInstructor = "Chuck Konala",
-                       courseInstructorPhone = "817-727-5432",
-                       courseInstructorEmail = "ckonala@wgu.edu",
-                       courseNotes = "",
-                       courseNotifications = true,
-                       termID = termPrimaryKey
+                       {
+                           courseTitle = "Course 1",
+                           courseStartDate = DateTime.Now.Date,
+                           courseEndDate = DateTime.Now.Date.AddDays(30),
+                           courseStatus = "Not Started",
+                           courseInstructor = "Chuck Konala",
+                           courseInstructorPhone = "817-727-5432",
+                           courseInstructorEmail = "ckonala@wgu.edu",
+                           courseNotes = "",
+                           courseNotifications = true,
+                           termID = termPrimaryKey
+                       };
 
-                   };
-
-                   App.Database.CreateCourseTable();
-                   await App.Database.InsertCourseAsync(course);
+                       App.Database.CreateCourseTable();
+                       await App.Database.InsertCourseAsync(course);
                 }
 
                 PerformDummyInsert = false;
