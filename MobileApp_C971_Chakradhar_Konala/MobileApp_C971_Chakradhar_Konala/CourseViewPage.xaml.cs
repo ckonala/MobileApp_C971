@@ -22,7 +22,15 @@ namespace MobileApp_C971_Chakradhar_Konala
 
         private async void AddCourse_OnClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AddCoursePage(term));
+            var tempCount = await App.Database.GetCourseAsync(term.ID);
+            if (tempCount.Count < 6)
+            {
+                await Navigation.PushAsync(new AddCoursePage(term));
+            }
+            else
+            {
+                await DisplayAlert("Error", "Max number of courses have already been added to this term", "Ok");
+            }
         }
 
         private void CourseList_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
