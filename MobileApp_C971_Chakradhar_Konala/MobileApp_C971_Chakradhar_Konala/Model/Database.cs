@@ -108,4 +108,4 @@ namespace MobileApp_C971_Chakradhar_Konala.Model
             return _database.QueryAsync<Course>("SELECT * From Course where termID=?",termID);
         }
     }
-}
+    }

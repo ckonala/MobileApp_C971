@@ -20,9 +20,9 @@ namespace MobileApp_C971_Chakradhar_Konala
             this.term = term;
         }
 
-        private void AddCourse_OnClicked(object sender, EventArgs e)
+        private async void AddCourse_OnClicked(object sender, EventArgs e)
         {
-            //throw new NotImplementedException();
+            await Navigation.PushAsync(new AddCoursePage(term));
         }
 
         private void CourseList_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
