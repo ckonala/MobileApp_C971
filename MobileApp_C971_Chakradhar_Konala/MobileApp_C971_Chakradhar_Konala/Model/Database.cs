@@ -44,6 +44,22 @@ namespace MobileApp_C971_Chakradhar_Konala.Model
         public int termID { get; set; }
     }
 
+    public class Assessments
+    {
+        [PrimaryKey, AutoIncrement]
+        public int ID { get; set; }
+
+        public string assessmentTitle { get; set; }
+
+        public string assessmentCode { get; set; }
+
+        public DateTime anticipatedDueDate { get; set; }
+
+        public bool assessmentNotifications { get; set; }
+
+        public int courseID { get; set; }
+    }
+
     public class Database
     {
         readonly SQLiteAsyncConnection _database;
@@ -53,7 +69,8 @@ namespace MobileApp_C971_Chakradhar_Konala.Model
             _database = new SQLiteAsyncConnection(dbPath);
         }
 
-        public  void CreateTermTable()
+        #region Term Queries
+        public void CreateTermTable()
         {
              _database.CreateTableAsync<Term>().Wait();
         }
@@ -82,7 +99,9 @@ namespace MobileApp_C971_Chakradhar_Konala.Model
         {
             return _database.DeleteAsync(term);
         }
+        #endregion
 
+        #region Course Queries
         public void CreateCourseTable()
         {
             _database.CreateTableAsync<Course>().Wait();
@@ -96,6 +115,11 @@ namespace MobileApp_C971_Chakradhar_Konala.Model
         public Task<int> InsertCourseAsync(Course course)
         {
             return _database.InsertAsync(course);
+        }
+
+        public Task<List<Course>> RetreiveCourseLastRow()
+        {
+            return _database.QueryAsync<Course>("SELECT * FROM Course ORDER BY ID DESC LIMIT 1");
         }
 
         public Task<int> UpdateCourseAsync(Course course)
@@ -112,5 +136,46 @@ namespace MobileApp_C971_Chakradhar_Konala.Model
         {
             return _database.QueryAsync<Course>("SELECT * From Course where termID=?",termID);
         }
+
+        #endregion
+
+        #region Assessment Queries
+
+        public void CreateAssessmentsTable()
+        {
+            _database.CreateTableAsync<Assessments>().Wait();
+        }
+
+        public Task<List<Assessments>> GetAssessmentsAsync()
+        {
+            return _database.Table<Assessments>().ToListAsync();
+        }
+
+        public Task<int> InsertAssessmentsAsync(Assessments assessment)
+        {
+            return _database.InsertAsync(assessment);
+        }
+
+        public Task<List<Assessments>> RetreiveAssessmentsLastRow()
+        {
+            return _database.QueryAsync<Assessments>("SELECT * FROM Assessments ORDER BY ID DESC LIMIT 1");
+        }
+
+        public Task<int> UpdateAssessmentsAsync(Assessments assessment)
+        {
+            return _database.UpdateAsync(assessment);
+        }
+
+        public Task<int> DeleteAssessmentsAsync(Assessments assessment)
+        {
+            return _database.DeleteAsync(assessment);
+        }
+
+        public Task<List<Assessments>> GetAssessmentsAsync(int courseID)
+        {
+            return _database.QueryAsync<Assessments>("SELECT * From Assessments where courseID=?", courseID);
+        }
+
+        #endregion
     }
-    }
+}

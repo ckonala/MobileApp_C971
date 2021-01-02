@@ -218,7 +218,16 @@
             </StackLayout>
 
             <Button Grid.Row="10"
-                        Grid.ColumnSpan="2"
+                    Grid.Column="0"
+                    Text="View Assessments"
+                    x:Name="ViewAssessments"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="EndAndExpand" 
+                    Margin="5,0,0,10"
+                    Clicked="ViewAssessments_OnClicked"/>
+
+            <Button Grid.Row="10"
+                        Grid.Column="1"
                         Text="Edit / Delete Course"
                         x:Name="EditDeleteCourse"
                         HorizontalOptions="CenterAndExpand"

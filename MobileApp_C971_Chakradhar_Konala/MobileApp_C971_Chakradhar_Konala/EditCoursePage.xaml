@@ -210,11 +210,11 @@
 
             <Button Grid.Row="9"
                         Grid.Column="0"
-                        Text="Save Course"
+                        Text="Save Edits "
                         x:Name="SaveCourse"
                         HorizontalOptions="CenterAndExpand"
                         VerticalOptions="End" 
-                        Margin="0,0,0,20"
+                        Margin="10,0,0,20"
                         Clicked="SaveCourse_OnClicked"/>
             <Button Grid.Row="9"
                     Grid.Column="1"
@@ -222,7 +222,7 @@
                     x:Name="DeleteCourse"
                     HorizontalOptions="CenterAndExpand"
                     VerticalOptions="End" 
-                    Margin="0,0,0,20"
+                    Margin="10,0,0,20"
                     Clicked="DeleteCourse_OnClicked"/>
 
         </Grid>

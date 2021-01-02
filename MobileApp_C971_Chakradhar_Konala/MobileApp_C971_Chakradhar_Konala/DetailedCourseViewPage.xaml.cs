@@ -46,7 +46,7 @@ namespace MobileApp_C971_Chakradhar_Konala
 
         private async void ShareNotes_OnClicked(object sender, EventArgs e)
         {
-            if (!(course.courseNotes is null))
+            if (!(course.courseNotes is null) && course.courseNotes.Length>1)
             {
                 await Share.RequestAsync(new ShareTextRequest
                 {
@@ -58,6 +58,11 @@ namespace MobileApp_C971_Chakradhar_Konala
             {
                 await DisplayAlert("Error", "Course Notes field is blank. Click on Edit course button and add notes. Please retry again", "Ok");
             }
+        }
+
+        private async void ViewAssessments_OnClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ViewAssessmentsPage(course));
         }
     }
 }

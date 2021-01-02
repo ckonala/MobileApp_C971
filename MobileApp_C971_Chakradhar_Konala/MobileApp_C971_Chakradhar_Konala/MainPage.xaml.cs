@@ -61,6 +61,31 @@ namespace MobileApp_C971_Chakradhar_Konala
 
                        App.Database.CreateCourseTable();
                        await App.Database.InsertCourseAsync(course);
+
+                       var tempcoursePrimaryKey = await App.Database.RetreiveCourseLastRow();
+                       var coursePrimaryKey = tempcoursePrimaryKey[0].ID;
+
+                       var objAssessment = new Assessments()
+                       {
+                           assessmentTitle = "Objective Assessment",
+                           assessmentCode = "KVO1",
+                           anticipatedDueDate = DateTime.Now.Date.AddDays(15),
+                           assessmentNotifications = true,
+                           courseID = coursePrimaryKey
+                       };
+
+                       var perfAssessment = new Assessments()
+                       {
+                           assessmentTitle = "Performance Assessment",
+                           assessmentCode = "PRT1",
+                           anticipatedDueDate = DateTime.Now.Date.AddDays(30),
+                           assessmentNotifications = true,
+                           courseID = coursePrimaryKey
+                       };
+
+                       App.Database.CreateAssessmentsTable();
+                       await App.Database.InsertAssessmentsAsync(objAssessment);
+                       await App.Database.InsertAssessmentsAsync(perfAssessment);
                 }
 
                 PerformDummyInsert = false;
