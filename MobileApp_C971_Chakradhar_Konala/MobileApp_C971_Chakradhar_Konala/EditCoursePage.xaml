@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileApp_C971_Chakradhar_Konala.EditCoursePage">
+
+    <NavigationPage.TitleView>
+        <Label Text="Edit / Delete Course" HorizontalOptions="Start" FontSize="Large"/>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+
+            <StackLayout Grid.Column="0"
+                         VerticalOptions="CenterAndExpand">
+                <Label  Text="Course :"
+                        VerticalOptions="CenterAndExpand"></Label>
+            </StackLayout>
+
+            <StackLayout Grid.Column="1"
+                         Orientation="Horizontal"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="CenterAndExpand">
+                <Entry  x:Name="CourseInfo"
+                        HorizontalOptions="CenterAndExpand"
+                        WidthRequest="250"
+                        VerticalOptions="Center"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="1"
+                         Grid.Column="0"
+                         VerticalOptions="CenterAndExpand">
+                <Label  Text="Start Date :"
+                        VerticalOptions="CenterAndExpand"></Label>
+            </StackLayout>
+
+            <StackLayout Grid.Row="1"
+                         Grid.Column="1"
+                         Orientation="Horizontal"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="CenterAndExpand">
+                <DatePicker x:Name="courseStartDatePicker"
+                            Format="D"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Center"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="2"
+                         Grid.Column="0"
+                         VerticalOptions="CenterAndExpand">
+                <Label  Text="End Date :"
+                        VerticalOptions="CenterAndExpand"></Label>
+            </StackLayout>
+
+            <StackLayout Grid.Row="2"
+                         Grid.Column="1"
+                         Orientation="Horizontal"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="CenterAndExpand">
+                <DatePicker x:Name="courseendDatePicker"
+                            Format="D"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Center"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="3"
+                             Grid.Column="0"
+                             VerticalOptions="CenterAndExpand">
+                <Label  Text="Course Status :"
+                            VerticalOptions="CenterAndExpand"
+                            HorizontalOptions="Start"></Label>
+            </StackLayout>
+
+            <StackLayout Grid.Row="3"
+                             Grid.Column="1"
+                             Orientation="Horizontal"
+                             HorizontalOptions="FillAndExpand"
+                             VerticalOptions="CenterAndExpand">
+                <Picker Title="--Select--"
+                        x:Name="courseSelect"
+                        ItemsSource="{Binding CourseStatusSource}"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="4"
+                         Grid.Column="0"
+                         VerticalOptions="CenterAndExpand">
+                <Label  Text="Course Instructor :"
+                            VerticalOptions="CenterAndExpand"></Label>
+            </StackLayout>
+
+            <StackLayout Grid.Row="4" 
+                            Grid.Column="1"
+                             Orientation="Horizontal"
+                             HorizontalOptions="FillAndExpand"
+                             VerticalOptions="CenterAndExpand">
+                <Entry  x:Name="CourseInstructor"
+                            HorizontalOptions="CenterAndExpand"
+                            WidthRequest="250"
+                            VerticalOptions="Center"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="5"
+                             Grid.Column="0"
+                             VerticalOptions="CenterAndExpand">
+                <Label  Text="Instructor No :"
+                            VerticalOptions="CenterAndExpand"></Label>
+            </StackLayout>
+
+            <StackLayout Grid.Row="5" 
+                             Grid.Column="1"
+                             Orientation="Horizontal"
+                             HorizontalOptions="FillAndExpand"
+                             VerticalOptions="CenterAndExpand">
+                <Entry  x:Name="CourseInstructorNumber"
+                            HorizontalOptions="CenterAndExpand"
+                            WidthRequest="250"
+                            VerticalOptions="Center"
+                            MaxLength="10"
+                            Keyboard="Telephone"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="6"
+                             Grid.Column="0"
+                             VerticalOptions="CenterAndExpand">
+                <Label  Text="Instructor Email :"
+                            VerticalOptions="CenterAndExpand"></Label>
+            </StackLayout>
+
+            <StackLayout Grid.Row="6" 
+                             Grid.Column="1"
+                             Orientation="Horizontal"
+                             HorizontalOptions="FillAndExpand"
+                             VerticalOptions="CenterAndExpand">
+                <Entry  x:Name="CourseInstructorEmail"
+                            HorizontalOptions="CenterAndExpand"
+                            WidthRequest="250"
+                            VerticalOptions="Center"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="7"
+                             Grid.Column="0"
+                             VerticalOptions="CenterAndExpand">
+                <Label  Text="Notes (Max 250 Characters) :"
+                            VerticalOptions="CenterAndExpand"></Label>
+            </StackLayout>
+
+            <StackLayout Grid.Row="7" 
+                             Grid.Column="1"
+                             Orientation="Horizontal"
+                             HorizontalOptions="FillAndExpand"
+                             VerticalOptions="CenterAndExpand">
+                <Editor x:Name="CourseNotes"
+                            HorizontalOptions="CenterAndExpand"
+                            WidthRequest="250"
+                            VerticalOptions="Center"
+                            FontSize="Small"
+                            AutoSize="TextChanges"
+                            MaxLength="250"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="8"
+                             Grid.Column="0"
+                             VerticalOptions="CenterAndExpand">
+                <Label  Text="Enable Notifications :"
+                            VerticalOptions="CenterAndExpand"></Label>
+            </StackLayout>
+
+            <StackLayout Grid.Row="8" 
+                             Grid.Column="1"
+                             Orientation="Horizontal"
+                             HorizontalOptions="FillAndExpand"
+                             VerticalOptions="CenterAndExpand">
+                <Switch x:Name="CourseNotification" IsToggled="False">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="On">
+                                <VisualState.Setters>
+                                    <Setter Property="ThumbColor"
+                                            Value="Green" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Off">
+                                <VisualState.Setters>
+                                    <Setter Property="ThumbColor"
+                                            Value="Red" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </Switch>
+            </StackLayout>
+
+            <Button Grid.Row="9"
+                        Grid.Column="0"
+                        Text="Save Course"
+                        x:Name="SaveCourse"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="End" 
+                        Margin="0,0,0,20"
+                        Clicked="SaveCourse_OnClicked"/>
+            <Button Grid.Row="9"
+                    Grid.Column="1"
+                    Text="Delete Course"
+                    x:Name="DeleteCourse"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="End" 
+                    Margin="0,0,0,20"
+                    Clicked="DeleteCourse_OnClicked"/>
+
+        </Grid>
+
+
+    </ContentPage.Content>
+</ContentPage>

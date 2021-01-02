@@ -52,7 +52,7 @@ namespace MobileApp_C971_Chakradhar_Konala
                            courseEndDate = DateTime.Now.Date.AddDays(30),
                            courseStatus = "Not Started",
                            courseInstructor = "Chuck Konala",
-                           courseInstructorPhone = "817-727-5432",
+                           courseInstructorPhone = "8177275432",
                            courseInstructorEmail = "ckonala@wgu.edu",
                            courseNotes = "",
                            courseNotifications = true,

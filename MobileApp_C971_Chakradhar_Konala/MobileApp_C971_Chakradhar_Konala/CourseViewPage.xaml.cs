@@ -33,9 +33,9 @@ namespace MobileApp_C971_Chakradhar_Konala
             }
         }
 
-        private void CourseList_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void CourseList_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //throw new NotImplementedException();
+            await Navigation.PushAsync(new DetailedCourseViewPage(e.CurrentSelection.FirstOrDefault() as Course));
         }
 
         protected override async void OnAppearing()
