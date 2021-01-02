@@ -14,6 +14,14 @@ namespace MobileApp_C971_Chakradhar_Konala.ViewModel
             }
         }
 
+        public List<string> AssessmentTypeSource
+        {
+            get
+            {
+                return new List<string> { "Objective Assessment", "Performance Assessment"};
+            }
+        }
+
         string selectedCourseStatus;
         public string SelectedMonkey
         {

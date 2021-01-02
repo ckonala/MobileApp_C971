@@ -22,19 +22,22 @@ namespace MobileApp_C971_Chakradhar_Konala
             BindingContext = new CoursePageViewModel();
         }
 
-        private void AddAssessment_OnClicked(object sender, EventArgs e)
+        private async void AddAssessment_OnClicked(object sender, EventArgs e)
         {
-           // throw new NotImplementedException();
+            var tempCount = await App.Database.GetAssessmentsAsync(course.ID);
+            if (tempCount.Count < 2)
+            {
+                await Navigation.PushAsync(new AddAssessmentPage(course));
+            }
+            else
+            {
+                await DisplayAlert("Error", "You have already added the maximum number of Assessments for this Course.", "Ok");
+            }
         }
 
         private async void AssessmentList_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             await Navigation.PushAsync(new DetailedAssessmentViewPage(e.CurrentSelection.FirstOrDefault() as Assessments));
-        }
-
-        private void EditDeleteTerm_OnClicked(object sender, EventArgs e)
-        {
-            //throw new NotImplementedException();
         }
 
         protected override async void OnAppearing()
