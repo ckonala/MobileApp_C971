@@ -106,13 +106,13 @@ namespace MobileApp_C971_Chakradhar_Konala
                     if (course.courseStartDate.Date.Equals(DateTime.Now.Date))
                     {
                         CrossLocalNotifications.Current.Show($"Course Notification",
-                            $"{course.courseTitle} Stars Today!",courseCounter);
+                            $"{course.courseTitle} Starts Today!",courseCounter);
                         courseCounter++;
                     }
                     else
                     {
                         CrossLocalNotifications.Current.Show($"Course Notification",
-                            $"{course.courseTitle} Stars Today!", courseCounter, course.courseStartDate.Date);
+                            $"{course.courseTitle} Starts Today!", courseCounter, course.courseStartDate.Date);
                         courseCounter++;
                     }
                     if (course.courseEndDate.Date.Equals(DateTime.Now.Date))
