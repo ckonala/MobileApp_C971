@@ -27,9 +27,9 @@ namespace MobileApp_C971_Chakradhar_Konala
            // throw new NotImplementedException();
         }
 
-        private void AssessmentList_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void AssessmentList_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-           // throw new NotImplementedException();
+            await Navigation.PushAsync(new DetailedAssessmentViewPage(e.CurrentSelection.FirstOrDefault() as Assessments));
         }
 
         private void EditDeleteTerm_OnClicked(object sender, EventArgs e)
@@ -45,5 +45,6 @@ namespace MobileApp_C971_Chakradhar_Konala
             AssessmentList.ItemsSource = _assessmentsList;
             base.OnAppearing();
         }
+
     }
 }

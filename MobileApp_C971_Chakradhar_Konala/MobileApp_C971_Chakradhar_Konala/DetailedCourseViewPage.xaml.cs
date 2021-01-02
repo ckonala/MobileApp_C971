@@ -26,8 +26,8 @@ namespace MobileApp_C971_Chakradhar_Konala
         protected override async void OnAppearing()
         {
             CourseInfo.Text = course.courseTitle;
-            courseStartDatePicker.Text = course.courseStartDate.Date.ToString("MMMM dd yyyy");
-            courseendDatePicker.Text = course.courseEndDate.Date.ToString("MMMM dd yyyy"); ;
+            courseStartDatePicker.Text = course.courseStartDate.Date.ToString("MMMM dd, yyyy");
+            courseendDatePicker.Text = course.courseEndDate.Date.ToString("MMMM dd, yyyy"); ;
             courseSelect.Text = course.courseStatus;
             CourseInstructor.Text = course.courseInstructor;
             CourseInstructorNumber.Text = course.courseInstructorPhone;

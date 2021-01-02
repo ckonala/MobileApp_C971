@@ -2,11 +2,111 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobileApp_C971_Chakradhar_Konala.DetailedAssessmentViewPage">
+
+    <NavigationPage.TitleView>
+        <Label Text="Assessment Information" HorizontalOptions="Start" FontSize="Large"/>
+    </NavigationPage.TitleView>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+
+            <StackLayout Grid.Column="0"
+                         VerticalOptions="CenterAndExpand">
+                <Label  Text="Assessment :"
+                        VerticalOptions="CenterAndExpand"></Label>
+            </StackLayout>
+
+            <StackLayout Grid.Column="1"
+                         Orientation="Horizontal"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="CenterAndExpand">
+                <Entry  x:Name="AssessmentInfo"
+                        HorizontalOptions="CenterAndExpand"
+                        WidthRequest="250"
+                        VerticalOptions="Center"
+                        IsReadOnly="True"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="1"
+                         Grid.Column="0"
+                         VerticalOptions="CenterAndExpand">
+                <Label  Text="Assessment Code :"
+                        VerticalOptions="CenterAndExpand"></Label>
+            </StackLayout>
+
+            <StackLayout Grid.Row="1" 
+                         Grid.Column="1"
+                         Orientation="Horizontal"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="CenterAndExpand">
+                <Entry  x:Name="AssessmentCode"
+                        HorizontalOptions="CenterAndExpand"
+                        WidthRequest="250"
+                        VerticalOptions="Center"
+                        IsReadOnly="true"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="2"
+                         Grid.Column="0"
+                         VerticalOptions="CenterAndExpand">
+                <Label  Text="Anticipated Due Date :"
+                        VerticalOptions="CenterAndExpand"></Label>
+            </StackLayout>
+
+            <StackLayout Grid.Row="2"
+                         Grid.Column="1"
+                         Orientation="Horizontal"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="CenterAndExpand">
+                <Entry  x:Name="assessmentDueDatePicker"
+                        HorizontalOptions="CenterAndExpand"
+                        WidthRequest="250"
+                        VerticalOptions="Center"
+                        IsReadOnly="True"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="3"
+                         Grid.Column="0"
+                         VerticalOptions="CenterAndExpand">
+                <Label  Text="Notifications Enabled :"
+                            VerticalOptions="CenterAndExpand"></Label>
+            </StackLayout>
+
+            <StackLayout Grid.Row="3" 
+                             Grid.Column="1"
+                             Orientation="Horizontal"
+                             HorizontalOptions="FillAndExpand"
+                             VerticalOptions="CenterAndExpand">
+                <Entry  x:Name="AssessmentNotification"
+                        HorizontalOptions="CenterAndExpand"
+                        WidthRequest="250"
+                        VerticalOptions="Center"
+                        IsReadOnly="True"/>
+            </StackLayout>
+
+            <Button Grid.Row="4"
+                        Grid.ColumnSpan="2"
+                        Text="Edit / Delete Assessment"
+                        x:Name="EditDeleteAssessment"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="EndAndExpand" 
+                        Margin="0,0,0,10"
+                        Clicked="EditDeleteAssessment_OnClicked"/>
+
+        </Grid>
+
     </ContentPage.Content>
+
 </ContentPage>
