@@ -37,7 +37,7 @@ namespace MobileApp_C971_Chakradhar_Konala
 
         private async void AssessmentList_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            await Navigation.PushAsync(new DetailedAssessmentViewPage(e.CurrentSelection.FirstOrDefault() as Assessments));
+            await Navigation.PushAsync(new DetailedAssessmentViewPage(e.CurrentSelection.FirstOrDefault() as Assessments,course));
         }
 
         protected override async void OnAppearing()

@@ -15,16 +15,19 @@ namespace MobileApp_C971_Chakradhar_Konala
     {
         private Assessments assessments { get; set; }
 
-        public DetailedAssessmentViewPage(Assessments assessments)
+        private Course course { get; set; }
+
+        public DetailedAssessmentViewPage(Assessments assessments,Course course)
         {
             InitializeComponent();
             this.assessments = assessments;
+            this.course = course;
             BindingContext = new CoursePageViewModel();
         }
 
-        private void EditDeleteAssessment_OnClicked(object sender, EventArgs e)
+        private async void EditDeleteAssessment_OnClicked(object sender, EventArgs e)
         {
-           // throw new NotImplementedException();
+            await Navigation.PushAsync(new EditAssessmentPage(assessments,course));
         }
 
         protected override async void OnAppearing()

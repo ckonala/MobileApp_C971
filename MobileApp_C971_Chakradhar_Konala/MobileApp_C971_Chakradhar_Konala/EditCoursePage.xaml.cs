@@ -130,9 +130,20 @@ namespace MobileApp_C971_Chakradhar_Konala
             }
         }
 
-        private void DeleteCourse_OnClicked(object sender, EventArgs e)
+        private async void DeleteCourse_OnClicked(object sender, EventArgs e)
         {
-            //throw new NotImplementedException();
+            if (await DisplayAlert("Confirmation",
+                "This will delete course and related assesments. Are you sure?", "Yes", "No"))
+            {
+                var getAssessmentWithCourseID = await App.Database.GetAssessmentsAsync(course.ID);
+                foreach (var assessments in getAssessmentWithCourseID)
+                {
+                    await App.Database.DeleteAssessmentsAsync(assessments);
+                }
+                await App.Database.DeleteCourseAsync(course);
+                Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
+                await Navigation.PopAsync();
+            }
         }
     }
 

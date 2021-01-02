@@ -64,10 +64,14 @@ namespace MobileApp_C971_Chakradhar_Konala
         protected override async void OnAppearing()
         {
             var assessmentList = await App.Database.GetAssessmentsAsync(course.ID);
-            var assessmentSource = new CoursePageViewModel().AssessmentTypeSource;
-            assessmentSource.Remove(assessmentList[0].assessmentTitle.ToString());
-            AssessmentSelect.SelectedItem = assessmentSource[0];
-            AssessmentSelect.IsEnabled = false;
+            if (assessmentList.Count != 0)
+            {
+                var assessmentSource = new CoursePageViewModel().AssessmentTypeSource;
+                assessmentSource.Remove(assessmentList[0].assessmentTitle.ToString());
+                AssessmentSelect.SelectedItem = assessmentSource[0];
+                AssessmentSelect.IsEnabled = false;
+            }
+
             base.OnAppearing();
         }
     }

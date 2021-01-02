@@ -80,9 +80,14 @@ namespace MobileApp_C971_Chakradhar_Konala
                 "This will delete Term, related courses and assesments. Are you sure?", "Yes", "No"))
             {
                 var getCourseWithTermID = await App.Database.GetCourseAsync(term.ID);
-                foreach (var Course in getCourseWithTermID)
+                foreach (var course in getCourseWithTermID)
                 {
-                    await App.Database.DeleteCourseAsync(Course);
+                    var getAssessmentWithCourseID = await App.Database.GetAssessmentsAsync(course.ID);
+                    foreach (var assessments in getAssessmentWithCourseID)
+                    {
+                        await App.Database.DeleteAssessmentsAsync(assessments);
+                    }
+                    await App.Database.DeleteCourseAsync(course);
                 }
 
                 await App.Database.DeleteTermAsync(term);
