@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MobileApp_C971_Chakradhar_Konala.Model;
 using MobileApp_C971_Chakradhar_Konala.ViewModel;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -41,6 +42,15 @@ namespace MobileApp_C971_Chakradhar_Konala
         private async void EditDeleteCourse_OnClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new EditCoursePage(course));
+        }
+
+        private async void ShareNotes_OnClicked(object sender, EventArgs e)
+        {
+            await Share.RequestAsync(new ShareTextRequest
+            {
+                Text = course.courseNotes,
+                Title = "Share Notes"
+            });
         }
     }
 }
