@@ -70,7 +70,7 @@ namespace MobileApp_C971_Chakradhar_Konala
                     {
                         assessmentTitle = "Objective Assessment",
                         assessmentCode = "KVO1",
-                        anticipatedDueDate = DateTime.Now.Date.AddDays(15),
+                        anticipatedDueDate = DateTime.Now.Date,
                         assessmentNotifications = true,
                         courseID = coursePrimaryKey
                     };
